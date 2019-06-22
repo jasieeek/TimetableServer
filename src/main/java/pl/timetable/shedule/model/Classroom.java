@@ -11,13 +11,13 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class Class {
+public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
 
-    public Class(String name) {
+    public Classroom(String name) {
         this.name = name;
     }
 }

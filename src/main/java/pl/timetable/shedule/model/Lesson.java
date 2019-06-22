@@ -11,7 +11,7 @@ import java.time.DayOfWeek;
 @NoArgsConstructor
 public class Lesson {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String teacherName;
@@ -22,10 +22,15 @@ public class Lesson {
     private Integer sequence;
 
 
-    public Lesson(String name, String teacherName, String classroomNumber) {
+    public Lesson(String name, String teacherName, String classroomNumber, String className, DayOfWeek dayOfWeek, Integer sequence) {
         this.name = name;
         this.teacherName = teacherName;
         this.classroomNumber = classroomNumber;
+        this.className = className;
+        this.dayOfWeek = dayOfWeek;
+        this.sequence = sequence;
+
     }
+
 
 }
