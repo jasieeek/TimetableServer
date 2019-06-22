@@ -5,9 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import pl.timetable.shedule.model.Classroom;
 import pl.timetable.shedule.model.Lesson;
 import pl.timetable.shedule.model.Teacher;
 import pl.timetable.shedule.model.User;
+import pl.timetable.shedule.repository.ClassroomRepository;
 import pl.timetable.shedule.repository.LessonRepository;
 import pl.timetable.shedule.repository.TeacherRepository;
 import pl.timetable.shedule.repository.UserRepository;
@@ -64,6 +66,19 @@ public class SheduleApplication {
     CommandLineRunner initClassName(LessonRepository lessonRepository) {
         return args -> {
             System.out.println(lessonRepository.findDistinctClassName());
+        };
+    }
+
+    @Bean
+    CommandLineRunner initClassroom(ClassroomRepository classroomRepository) {
+        return args -> {
+            Classroom classroom1 = new Classroom("101");
+            Classroom classroom2 = new Classroom("102");
+            Classroom classroom3 = new Classroom("201");
+
+            classroomRepository.save(classroom1);
+            classroomRepository.save(classroom2);
+            classroomRepository.save(classroom3);
         };
     }
 }
