@@ -15,17 +15,17 @@ public class Lesson {
     private long id;
     private String name;
     private String teacherName;
-    private String classroomNumber;
+    private String classroomName;
     @Column(name="CLASS_NAME")
     private String className;
     private DayOfWeek dayOfWeek;
     private Integer sequence;
 
 
-    public Lesson(String name, String teacherName, String classroomNumber, String className, DayOfWeek dayOfWeek, Integer sequence) {
+    public Lesson(String name, String teacherName, String classroomName, String className, DayOfWeek dayOfWeek, Integer sequence) {
         this.name = name;
         this.teacherName = teacherName;
-        this.classroomNumber = classroomNumber;
+        this.classroomName = classroomName;
         this.className = className;
         this.dayOfWeek = dayOfWeek;
         this.sequence = sequence;

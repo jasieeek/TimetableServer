@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
-    @Query(value = "SELECT DISTINCT SURNAME FROM TEACHER", nativeQuery = true)
-    List<String> findDistinctTeacherName();
+//     @Query(value = "SELECT DISTINCT NAME, SURNAME FROM TEACHER", nativeQuery = true)
+//    List<String> findDistinctTeacherName();
 }

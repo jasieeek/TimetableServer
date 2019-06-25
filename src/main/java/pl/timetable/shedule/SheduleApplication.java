@@ -1,6 +1,5 @@
 package pl.timetable.shedule;
 
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +13,7 @@ import pl.timetable.shedule.repository.LessonRepository;
 import pl.timetable.shedule.repository.TeacherRepository;
 import pl.timetable.shedule.repository.UserRepository;
 
+
 import java.time.DayOfWeek;
 import java.util.stream.Stream;
 
@@ -24,24 +24,24 @@ public class SheduleApplication {
         SpringApplication.run(SheduleApplication.class, args);
     }
 
-//    @Bean
-//    CommandLineRunner initUser(UserRepository userRepository) {
-//        return args -> {
-//            Stream.of("John", "Adrianna", "Jennifer", "Helen", "Rachel").forEach(name -> {
-//                User user = new User();
-//                user.setName(name);
-//                userRepository.save(user);
-//            });
-//            userRepository.findAll().forEach(System.out::println);
-//        };
-//    }
+    @Bean
+    CommandLineRunner initUser(UserRepository userRepository) {
+        return args -> {
+            Stream.of("John", "Adrianna", "Jennifer", "Helen", "Rachel").forEach(name -> {
+                User user = new User();
+                user.setName(name);
+                userRepository.save(user);
+            });
+            userRepository.findAll().forEach(System.out::println);
+        };
+    }
 
     @Bean
     CommandLineRunner initLesson(LessonRepository lessonRepository) {
         return args -> {
-            Lesson lesson1 = new Lesson("Matematyka", "A.Lenarcik", "114", "1A", DayOfWeek.MONDAY, 1);
-            Lesson lesson2 = new Lesson("Programowanie JAVA", "P.Paduch", "314", "1A", DayOfWeek.TUESDAY, 3);
-            Lesson lesson3 = new Lesson("Statystyka", "S.Deniziak", "211", "1A", DayOfWeek.FRIDAY, 6);
+            Lesson lesson1 = new Lesson("Matematyka", "Andrzej Lenarcik", "114", "1A", DayOfWeek.MONDAY, 4);
+            Lesson lesson2 = new Lesson("Programowanie JAVA", "Pawel Paduch", "314", "1A", DayOfWeek.TUESDAY, 3);
+            Lesson lesson3 = new Lesson("Statystyka", "Stanislaw Deniziak", "211", "1C", DayOfWeek.FRIDAY, 6);
 
             lessonRepository.save(lesson1);
             lessonRepository.save(lesson2);

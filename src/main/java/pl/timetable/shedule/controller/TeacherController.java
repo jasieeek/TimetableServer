@@ -1,6 +1,7 @@
 package pl.timetable.shedule.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.web.bind.annotation.*;
 import pl.timetable.shedule.model.Class;
 import pl.timetable.shedule.model.Lesson;
@@ -19,6 +20,7 @@ public class TeacherController {
 
     @GetMapping("/teacher")
     public List<Teacher> getTeachers() {
+        //System.out.println(teacherRepository.findDistinctTeacherName());
         return (List<Teacher>) teacherRepository.findAll();
     }
 
@@ -27,7 +29,12 @@ public class TeacherController {
         teacherRepository.save(teacher);
     }
 
-//    @GetMapping("/teacher/all")
+    @DeleteMapping("/{id}")
+    void delTeacher(@PathVariable(value = "id") long id) {
+        teacherRepository.deleteById(id);
+    }
+//
+//    @GetMapping("/")
 //    public List<Teacher> getAllTeachers(){
 //        List<Teacher> tmpTeacherList = new ArrayList<>();
 //        List<String> tmpList = new ArrayList<>(teacherRepository.findDistinctTeacherName());
