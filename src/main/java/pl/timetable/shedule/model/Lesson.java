@@ -29,7 +29,6 @@ public class Lesson {
         this.className = className;
         this.dayOfWeek = dayOfWeek;
         this.sequence = sequence;
-
     }
 
 

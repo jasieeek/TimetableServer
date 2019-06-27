@@ -1,14 +1,10 @@
 package pl.timetable.shedule.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
 import org.springframework.web.bind.annotation.*;
-import pl.timetable.shedule.model.Class;
-import pl.timetable.shedule.model.Lesson;
 import pl.timetable.shedule.model.Teacher;
 import pl.timetable.shedule.repository.TeacherRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
