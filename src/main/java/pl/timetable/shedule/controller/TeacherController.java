@@ -16,7 +16,6 @@ public class TeacherController {
 
     @GetMapping("/teacher")
     public List<Teacher> getTeachers() {
-        //System.out.println(teacherRepository.findDistinctTeacherName());
         return (List<Teacher>) teacherRepository.findAll();
     }
 
@@ -25,21 +24,8 @@ public class TeacherController {
         teacherRepository.save(teacher);
     }
 
-    @DeleteMapping("/{id}")
-    void delTeacher(@PathVariable(value = "id") long id) {
+    @DeleteMapping("/teacher/del/{id}")
+    void delTeacher(@PathVariable long id) {
         teacherRepository.deleteById(id);
     }
-//
-//    @GetMapping("/")
-//    public List<Teacher> getAllTeachers(){
-//        List<Teacher> tmpTeacherList = new ArrayList<>();
-//        List<String> tmpList = new ArrayList<>(teacherRepository.findDistinctTeacherName());
-//        for (int i=0; i<tmpList.size();i++){
-//            tmpTeacherList.add(new Teacher(tmpList.get(i)));
-//        }
-//
-//        return tmpTeacherList;
-//    }
-
-
 }

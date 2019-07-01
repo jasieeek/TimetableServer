@@ -37,4 +37,9 @@ public class ClassroomController {
         return tmpClassroomList;
     }
 
+    @DeleteMapping("/classroom/del/{id}")
+    void delClassroom(@PathVariable long id) {
+        classroomRepository.deleteById(id);
+    }
+
 }

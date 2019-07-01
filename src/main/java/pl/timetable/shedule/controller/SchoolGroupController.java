@@ -25,4 +25,8 @@ public class SchoolGroupController {
         schoolGroupRepository.save(group);
     }
 
+    @DeleteMapping("/group/del/{id}")
+    void delClass(@PathVariable long id) {
+        schoolGroupRepository.deleteById(id);
+    }
 }
