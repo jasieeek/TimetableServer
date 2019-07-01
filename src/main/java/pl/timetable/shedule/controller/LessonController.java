@@ -39,6 +39,11 @@ public class LessonController {
         return tmpClassList;
     }
 
+    @DeleteMapping("/timetable/del/{id}")
+    void delLesson(@PathVariable long id) {
+        lessonRepository.deleteById(id);
+    }
+
     @GetMapping("/timetable/classname/{name}")
     public List<Lesson> getIndicatedClassLessons(@PathVariable("name") String name){
         return lessonRepository.findLessonByClassName(name);
