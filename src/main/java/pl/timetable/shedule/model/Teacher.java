@@ -1,5 +1,6 @@
 package pl.timetable.shedule.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,15 +12,11 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String surname;
-
-    public Teacher(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
-    }
 }

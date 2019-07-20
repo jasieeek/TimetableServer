@@ -1,5 +1,6 @@
 package pl.timetable.shedule.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.time.DayOfWeek;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,16 +22,4 @@ public class Lesson {
     private String className;
     private DayOfWeek dayOfWeek;
     private Integer sequence;
-
-
-    public Lesson(String name, String teacherName, String classroomName, String className, DayOfWeek dayOfWeek, Integer sequence) {
-        this.name = name;
-        this.teacherName = teacherName;
-        this.classroomName = classroomName;
-        this.className = className;
-        this.dayOfWeek = dayOfWeek;
-        this.sequence = sequence;
-    }
-
-
 }

@@ -25,8 +25,21 @@ public class SchoolGroupController {
         schoolGroupRepository.save(group);
     }
 
+    @PutMapping("/group/{id}")
+    public SchoolGroup replaceGroup(@RequestBody SchoolGroup newGroup, @PathVariable Long id) {
+        return schoolGroupRepository.findById(id)
+                .map(group -> {
+                    group.setName(newGroup.getName());
+                    return schoolGroupRepository.save(group);
+                })
+                .orElseGet(() -> {
+                    newGroup.setId(id);
+                    return schoolGroupRepository.save(newGroup);
+                });
+    }
+
     @DeleteMapping("/group/del/{id}")
-    void delClass(@PathVariable long id) {
+    public void delClass(@PathVariable long id) {
         schoolGroupRepository.deleteById(id);
     }
 }

@@ -6,8 +6,11 @@ import pl.timetable.shedule.model.Classroom;
 import pl.timetable.shedule.model.Teacher;
 import pl.timetable.shedule.repository.ClassroomRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -23,17 +26,20 @@ public class ClassroomController {
 
     @PostMapping("/classroom")
     void addClassroom(@RequestBody Classroom classroom) {
-        classroomRepository.save(classroom);
+        Classroom tmpClassroom = classroomRepository.findClassroomByName(classroom.getName());
+        if(tmpClassroom == null)
+            classroomRepository.save(classroom);
+        else
+            throw new EntityNotFoundException("Resource not found!!!");
     }
 
     @GetMapping("/classroom/all")
     public List<Classroom> getAllClassrooms(){
         List<Classroom> tmpClassroomList = new ArrayList<>();
         List<String> tmpList = new ArrayList<>(classroomRepository.findDistinctClassroomName());
-        for (int i=0; i<tmpList.size();i++){
-            tmpClassroomList.add(new Classroom(tmpList.get(i)));
+        for (String s: tmpList) {
+            tmpClassroomList.add(new Classroom(s));
         }
-
         return tmpClassroomList;
     }
 

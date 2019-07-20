@@ -11,4 +11,8 @@ import java.util.List;
 public interface ClassroomRepository extends JpaRepository<Classroom, Long> {
     @Query(value = "SELECT DISTINCT NAME FROM CLASSROOM", nativeQuery = true)
     List<String> findDistinctClassroomName();
+
+    Classroom findClassroomByName(String name);
+
+
 }

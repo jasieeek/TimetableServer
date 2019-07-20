@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Bean;
 import pl.timetable.shedule.model.*;
 import pl.timetable.shedule.repository.*;
 
-
-import java.time.DayOfWeek;
 import java.util.stream.Stream;
 
 @SpringBootApplication
