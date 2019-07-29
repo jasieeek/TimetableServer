@@ -20,6 +20,11 @@ public class SchoolGroupController {
         return (List<SchoolGroup>) schoolGroupRepository.findAll();
     }
 
+    @GetMapping("/group/sorted")
+    public List<SchoolGroup> getSortedSchoolGroups() {
+        return (List<SchoolGroup>) schoolGroupRepository.findSortedSchoolGroups();
+    }
+
     @PostMapping("/group")
     void addGroup(@RequestBody SchoolGroup group) {
         schoolGroupRepository.save(group);

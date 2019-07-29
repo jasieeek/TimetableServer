@@ -19,6 +19,25 @@ public class TeacherController {
         return (List<Teacher>) teacherRepository.findAll();
     }
 
+    @GetMapping("/teacher/sorted")
+    public List<Teacher> getSortedTeachers() {
+        return (List<Teacher>) teacherRepository.findSortedTeachers();
+    }
+
+    @PutMapping("/teacher/{id}")
+    public Teacher replaceGroup(@RequestBody Teacher newTeacher, @PathVariable Long id) {
+        return teacherRepository.findById(id)
+                .map(teacher -> {
+                    teacher.setName(newTeacher.getName());
+                    teacher.setSurname(newTeacher.getSurname());
+                    return teacherRepository.save(teacher);
+                })
+                .orElseGet(() -> {
+                    newTeacher.setId(id);
+                    return teacherRepository.save(newTeacher);
+                });
+    }
+
     @PostMapping("/teacher")
     void addTeacher(@RequestBody Teacher teacher) {
         teacherRepository.save(teacher);

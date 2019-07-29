@@ -18,7 +18,6 @@ public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Pattern(regexp = "[0-3]?[0-9]{1,2}")
     private String name;
 
     public Classroom(String name) {

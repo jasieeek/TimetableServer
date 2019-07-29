@@ -24,6 +24,11 @@ public class ClassroomController {
         return (List<Classroom>) classroomRepository.findAll();
     }
 
+    @GetMapping("/classroom/sorted")
+    public List<Classroom> getSortedClassrooms() {
+        return (List<Classroom>) classroomRepository.findSortedClassrooms();
+    }
+
     @PostMapping("/classroom")
     void addClassroom(@RequestBody Classroom classroom) {
         Classroom tmpClassroom = classroomRepository.findClassroomByName(classroom.getName());
@@ -32,6 +37,20 @@ public class ClassroomController {
         else
             throw new EntityNotFoundException("Resource not found!!!");
     }
+
+    @PutMapping("/classroom/{id}")
+    public Classroom replaceClassroom(@RequestBody Classroom newClassroom, @PathVariable Long id) {
+        return classroomRepository.findById(id)
+                .map(classroom -> {
+                    classroom.setName(newClassroom.getName());
+                    return classroomRepository.save(classroom);
+                })
+                .orElseGet(() -> {
+                    newClassroom.setId(id);
+                    return classroomRepository.save(newClassroom);
+                });
+    }
+
 
     @GetMapping("/classroom/all")
     public List<Classroom> getAllClassrooms(){
@@ -47,5 +66,4 @@ public class ClassroomController {
     void delClassroom(@PathVariable long id) {
         classroomRepository.deleteById(id);
     }
-
 }

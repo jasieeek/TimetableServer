@@ -14,5 +14,6 @@ public interface ClassroomRepository extends JpaRepository<Classroom, Long> {
 
     Classroom findClassroomByName(String name);
 
-
+    @Query(value = "SELECT * FROM classroom ORDER BY name ASC", nativeQuery = true)
+    List<Classroom> findSortedClassrooms();
 }
